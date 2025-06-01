@@ -1,30 +1,51 @@
-# Age Group Detection using CNN
+# Age Detection Using CNN
 
-This project uses a Convolutional Neural Network (CNN) to classify a person’s age group from their face image. The model was trained on the UTKFace dataset and predicts one of the following age groups:
+This project uses a Convolutional Neural Network (CNN) to detect the age group of a person from an image using the UTKFace dataset.
 
-- Child
-- Teen
-- Young Adult
-- Adult
-- Middle-aged
-- Senior
+## 👶 Age Groups
+The model classifies images into the following age groups:
+- Child (0-12)
+- Teen (13-19)
+- Young Adult (20-29)
+- Adult (30-44)
+- Middle-aged (45-59)
+- Senior (60+)
 
-## 📁 Project Structure
+## 🧠 Model Accuracy
+- Achieved test accuracy: **87.16%**
 
-- `age_model_checkpoint.weights.h5`: Saved model weights
-- `age_group_predictor.ipynb`: Jupyter notebook with all training and testing steps
-- `main_script.py`: (Optional) Script version of the notebook
-- `requirements.txt`: List of dependencies
-- `data/`: Sample images for testing
+## 🛠 Requirements
+Install dependencies with:
 
-## ⚙️ Setup Instructions
+```bash
+pip install -r requirements.txt
 
-1. Clone the repository:
 
-### 📥 Dataset
+🚀 Usage
 
-Download the UTKFace dataset from the official repository:
-[https://susanqq.github.io/UTKFace/](https://susanqq.github.io/UTKFace/)
+def predict_age_group(img_path):
+    img = cv2.imread(img_path)
+    img = cv2.resize(img, (64, 64)) / 255.0
+    img = np.expand_dims(img, axis=0)
 
-After downloading, extract the dataset and place it inside the `data/` folder like this:
+    prediction = model.predict(img)
+    predicted_class = np.argmax(prediction)
 
+    age_groups = ['Child', 'Teen', 'Young Adult', 'Adult', 'Middle-aged', 'Senior']
+    return age_groups[predicted_class]
+
+📦 Files
+age_detection.ipynb - Main notebook
+
+age_detection_model.h5 - Trained age detection model
+
+requirements.txt - Python dependencies
+
+📸 Dataset
+This project uses the UTKFace dataset, which contains over 20,000 face images with age, gender, and ethnicity labels.
+
+Note: Dataset is not included due to size. Download it separately from:
+UTKFace Dataset on Kaggle
+
+🤝 License
+Free to use for academic and non-commercial purposes.
