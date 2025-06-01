@@ -1,0 +1,16 @@
+# Ignore dataset
+data/
+*.zip
+*.tar
+*.tar.gz
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore model training cache
+__pycache__/
+*.pyc
+
+# Ignore system files
+.DS_Store
+Thumbs.db
